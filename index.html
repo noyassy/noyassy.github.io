@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUDDLEXYZ RANK VS BOT — PLUS UI</title>
+    <meta name="description" content="CUDDLEXYZ Rank vs Bot — Rp 2.000 / Match, Max Glory 75, MMR Cepet Naik, K/D/A Tinggi 50+, Bot Jinak Gampang Cari Savage.">
+    <meta name="theme-color" content="#6c4cff">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Reset & Base PLUS UI Tokens */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #fafbff;
+            --card: #ffffff;
+            --border: #e8ebf3;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --primary: #6c4cff;
+            --secondary: #8b5cf6;
+            --shadow: 0 10px 35px rgba(108, 76, 255, .08);
+            --shadow-hover: 0 20px 50px rgba(108, 76, 255, .14);
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* PLUS UI Radial Gradient + 40px Subtle Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(circle at top left, rgba(108, 76, 255, .09), transparent 42%),
+                radial-gradient(circle at bottom right, rgba(139, 92, 246, .06), transparent 42%),
+                linear-gradient(rgba(108, 76, 255, .035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(108, 76, 255, .035) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        section {
+            padding: 56px 0;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Glassmorphism Fixed Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 900;
+            background: rgba(255, 255, 255, .88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, .03);
+        }
+
+        .navbar {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #6c4cff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-badge {
+            font-size: .7rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(108, 76, 255, .1);
+            color: var(--primary);
+            border: 1px solid rgba(108, 76, 255, .18);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-size: .92rem;
+            font-weight: 600;
+            transition: .2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            color: #374151;
+            align-items: center;
+            justify-content: center;
+            transition: .2s;
+        }
+
+        .menu-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Floating Audio Button */
+        .floating-audio-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 950;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .95);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(108, 76, 255, .24);
+            color: var(--primary);
+            font-size: .8rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 28px rgba(108, 76, 255, .18);
+            transition: all .25s ease;
+        }
+
+        .floating-audio-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(108, 76, 255, .26);
+        }
+
+        /* Hero Section (2 Columns Desktop, 1 Column Mobile) */
+        .hero {
+            padding-top: 104px;
+            padding-bottom: 48px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.08fr .92fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: 1px solid rgba(108, 76, 255, .18);
+            background: rgba(108, 76, 255, .08);
+            color: #6c4cff;
+            font-size: .8rem;
+            font-weight: 700;
+            letter-spacing: .03em;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.35rem, 4.8vw, 4.1rem);
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+
+        .hero h1 span {
+            display: block;
+            background: linear-gradient(135deg, #6c4cff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: clamp(.95rem, 1.5vw, 1.05rem);
+            max-width: 560px;
+        }
+
+        .hero-quick-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 26px;
+            flex-wrap: wrap;
+        }
+
+        /* Reusable PLUS UI Buttons */
+        .btn {
+            padding: 14px 24px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: .92rem;
+            transition: all .25s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            cursor: pointer;
+            border: none;
+            min-height: 48px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6c4cff, #8b5cf6);
+            color: #ffffff;
+            box-shadow: 0 12px 26px rgba(108, 76, 255, .26);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 16px 34px rgba(108, 76, 255, .36);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+            color: #ffffff;
+            box-shadow: 0 12px 26px rgba(22, 163, 74, .26);
+        }
+
+        .btn-whatsapp:hover {
+            box-shadow: 0 16px 34px rgba(22, 163, 74, .36);
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            color: #374151;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .04);
+        }
+
+        .btn-secondary:hover {
+            border-color: #d8ccff;
+            color: var(--primary);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* Hero Right Card: Pricing & Match Order Calculator */
+        .pricing-card {
+            border-radius: 28px;
+            background: linear-gradient(155deg, #ffffff 0%, #f6f3ff 100%);
+            border: 1px solid #e2dbfc;
+            box-shadow: 0 24px 55px rgba(108, 76, 255, .12);
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::after {
+            content: '';
+            position: absolute;
+            top: -55px;
+            right: -55px;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(108, 76, 255, .14), transparent 70%);
+            pointer-events: none;
+        }
+
+        .price-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .price-label {
+            font-size: .78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            color: var(--muted);
+        }
+
+        .glory-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 13px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #6c4cff, #8b5cf6);
+            color: #ffffff;
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            box-shadow: 0 6px 16px rgba(108, 76, 255, .24);
+        }
+
+        .main-price {
+            font-size: clamp(2.1rem, 3.6vw, 2.85rem);
+            font-weight: 900;
+            color: #111827;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+
+        .main-price span {
+            font-size: .95rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Estimator Box inside Pricing Card */
+        .estimator-box {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(108, 76, 255, .05);
+        }
+
+        .estimator-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .estimator-title {
+            font-size: .85rem;
+            font-weight: 800;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            letter-spacing: .02em;
+        }
+
+        .match-badge {
+            background: rgba(108, 76, 255, .1);
+            color: var(--primary);
+            font-weight: 800;
+            font-size: .82rem;
+            padding: 5px 12px;
+            border-radius: 10px;
+        }
+
+        /* Touch-friendly Match Selector Grid (1 - 5 Match) */
+        .match-selector {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .match-opt {
+            min-height: 46px;
+            border-radius: 13px;
+            border: 1.5px solid var(--border);
+            background: #fafbff;
+            color: #374151;
+            font-weight: 800;
+            font-size: .95rem;
+            cursor: pointer;
+            transition: all .2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .match-opt:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: #f5f3ff;
+        }
+
+        .match-opt.active {
+            background: linear-gradient(135deg, #6c4cff, #8b5cf6);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 6px 16px rgba(108, 76, 255, .26);
+        }
+
+        .estimator-summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0 16px;
+            border-top: 1px dashed var(--border);
+        }
+
+        .est-label {
+            font-size: .85rem;
+            color: #374151;
+            font-weight: 700;
+        }
+
+        .est-total {
+            font-size: 1.45rem;
+            font-weight: 900;
+            color: var(--primary);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            max-width: 620px;
+            margin: 0 auto 28px;
+        }
+
+        .section-pill {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 999px;
+            background: rgba(108, 76, 255, .08);
+            color: var(--primary);
+            font-size: .74rem;
+            font-weight: 700;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.65rem, 3vw, 2.25rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #111827;
+            margin-bottom: 6px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            font-size: .92rem;
+        }
+
+        /* Single-Column Compact Stack (max-width 672px, spacing 10px-12px) */
+        .compact-stack {
+            max-width: 672px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .compact-row {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 15px 20px;
+            border-radius: 24px;
+            box-shadow: 0 6px 22px rgba(108, 76, 255, .06);
+            transition: all .25s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .compact-row:hover {
+            transform: translateY(-2px);
+            border-color: #d8ccff;
+            box-shadow: 0 12px 28px rgba(108, 76, 255, .11);
+        }
+
+        .compact-row-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .compact-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: rgba(108, 76, 255, .09);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+        }
+
+        .compact-row h3 {
+            font-size: .98rem;
+            font-weight: 800;
+            color: #111827;
+            line-height: 1.25;
+            margin-bottom: 2px;
+        }
+
+        .compact-row p {
+            color: var(--muted);
+            font-size: .84rem;
+            line-height: 1.4;
+        }
+
+        .compact-badge {
+            font-size: .74rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: rgba(108, 76, 255, .08);
+            border: 1px solid rgba(108, 76, 255, .14);
+            padding: 5px 12px;
+            border-radius: 999px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* Grids for Payment & Social Media */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        /* Payment Cards */
+        .payment-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 26px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            transition: .3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .payment-card:hover {
+            transform: translateY(-5px);
+            border-color: #d8ccff;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            background: rgba(108, 76, 255, .09);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .card-tag {
+            font-size: .76rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: rgba(108, 76, 255, .08);
+            padding: 6px 12px;
+            border-radius: 10px;
+        }
+
+        .payment-card h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #111827;
+            margin: 14px 0 6px;
+        }
+
+        .payment-card p {
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        .payment-preview {
+            background: #fafbff;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 16px;
+            margin: 18px 0 20px;
+        }
+
+        .payment-preview-label {
+            font-size: .72rem;
+            font-weight: 700;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            margin-bottom: 4px;
+        }
+
+        .payment-preview-value {
+            font-size: 1.12rem;
+            font-weight: 800;
+            color: #111827;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .payment-preview-sub {
+            font-size: .82rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 2px;
+        }
+
+        /* Social Cards */
+        .social-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 22px;
+            text-decoration: none;
+            color: var(--text);
+            box-shadow: var(--shadow);
+            transition: .3s ease;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            border-color: #d8ccff;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .social-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .icon-wa {
+            background: rgba(37, 211, 102, .12);
+            color: #16a34a;
+        }
+
+        .icon-ig {
+            background: rgba(236, 72, 153, .12);
+            color: #db2777;
+        }
+
+        .icon-tt {
+            background: rgba(108, 76, 255, .1);
+            color: #6c4cff;
+        }
+
+        .social-meta span {
+            display: block;
+            font-size: .74rem;
+            font-weight: 700;
+            color: var(--muted);
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .social-meta strong {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #111827;
+            word-break: break-word;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            background: rgba(255, 255, 255, .8);
+            backdrop-filter: blur(14px);
+        }
+
+        footer h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 6px;
+        }
+
+        footer p {
+            color: var(--muted);
+            font-size: .92rem;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: .8rem;
+            font-weight: 600;
+            letter-spacing: .05em;
+            color: #9ca3af;
+        }
+
+        /* Modal Popup */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(17, 24, 39, .55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            opacity: 0;
+            transition: opacity .25s ease;
+        }
+
+        .modal-backdrop.show {
+            opacity: 1;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 28px 24px;
+            max-width: 410px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 30px 70px rgba(17, 24, 39, .22);
+            transform: scale(.94) translateY(10px);
+            transition: transform .25s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .modal-backdrop.show .modal-box {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #fafbff;
+            border: 1px solid var(--border);
+            color: #4b5563;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: .2s;
+        }
+
+        .modal-close:hover {
+            background: rgba(108, 76, 255, .1);
+            color: var(--primary);
+        }
+
+        .modal-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: rgba(108, 76, 255, .1);
+            color: var(--primary);
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 6px;
+        }
+
+        .modal-desc {
+            font-size: .86rem;
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .rekening-box {
+            background: #fafbff;
+            border: 1px solid #e2dbfc;
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 18px;
+        }
+
+        .rekening-number {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #111827;
+            letter-spacing: .04em;
+            margin: 4px 0;
+            user-select: all;
+        }
+
+        .rekening-name {
+            font-size: .84rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .qris-frame {
+            background: #fafbff;
+            border: 2px solid #e2dbfc;
+            border-radius: 22px;
+            padding: 12px;
+            max-width: 230px;
+            aspect-ratio: 1 / 1;
+            margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qris-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 14px;
+        }
+
+        .merchant-pill {
+            display: inline-block;
+            background: #fafbff;
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-size: .8rem;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 18px;
+        }
+
+        .merchant-pill span {
+            color: var(--primary);
+        }
+
+        .modal-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 22px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-16px);
+            z-index: 1200;
+            background: #111827;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 14px;
+            font-size: .84rem;
+            font-weight: 700;
+            letter-spacing: .02em;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            box-shadow: 0 16px 36px rgba(17, 24, 39, .24);
+            opacity: 0;
+            pointer-events: none;
+            transition: all .28s cubic-bezier(0.25, 0.8, 0.25, 1);
+            white-space: nowrap;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 960px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 32px;
+            }
+            .hero p {
+                margin: auto;
+            }
+            .hero-quick-actions {
+                justify-content: center;
+            }
+            .pricing-card {
+                max-width: 500px;
+                width: 100%;
+                margin: auto;
+                text-align: left;
+            }
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, .98);
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                padding: 18px 24px;
+                gap: 14px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, .06);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-btn {
+                display: flex;
+            }
+            section {
+                padding: 44px 0;
+            }
+            .hero {
+                padding-top: 94px;
+                padding-bottom: 36px;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-badge {
+                display: none;
+            }
+            .pricing-card {
+                padding: 20px 18px;
+                border-radius: 24px;
+            }
+            .estimator-box {
+                padding: 16px;
+            }
+            .compact-row {
+                padding: 14px 16px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .compact-badge {
+                margin-left: 58px;
+            }
+            .payment-card {
+                padding: 22px 18px;
+            }
+            .floating-audio-btn {
+                bottom: 16px;
+                right: 16px;
+                padding: 10px 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" role="status" aria-live="polite">
+        <i class="fa-solid fa-circle-check" style="color: #a78bfa; font-size: 1rem;"></i>
+        <span id="toastMessage">BERHASIL DISALIN!</span>
+    </div>
+
+    <!-- Audio Latar: Bastille - Pompeii -->
+    <audio id="musikLatar" loop preload="auto" autoplay>
+        <source src="https://archive.org/download/bastille-pompeii-official-music-video/Bastille%20-%20Pompeii%20%28Official%20Music%20Video%29.mp3" type="audio/mpeg">
+        <source src="https://archive.org/download/AlsPlaylistMixedGenre/Pompeii%20-%20Bastille.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Tombol Kontrol Musik Melayang -->
+    <button id="audioToggleBtn" class="floating-audio-btn" onclick="toggleAudio()" title="Kontrol Musik Latar: Bastille - Pompeii">
+        <i id="audioIcon" class="fa-solid fa-volume-xmark"></i>
+        <span>Music</span>
+    </button>
+
+    <!-- Fixed Glassmorphism Navbar -->
+    <nav>
+        <div class="container navbar">
+            <a href="#" class="logo-wrap">
+                <span class="logo">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <span>CUDDLEXYZ</span>
+                </span>
+                <span class="nav-badge">RANK VS BOT</span>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#order" onclick="closeMobileMenu()">Order</a>
+                <a href="#benefit" onclick="closeMobileMenu()">Benefit</a>
+                <a href="#syarat" onclick="closeMobileMenu()">Syarat</a>
+                <a href="#pembayaran" onclick="closeMobileMenu()">Pembayaran</a>
+                <a href="#kontak" onclick="closeMobileMenu()">Kontak</a>
+            </div>
+
+            <button class="menu-btn" id="menuBtn" aria-label="Buka Menu Navigasi">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero & Order Calculator Section -->
+    <section class="hero" id="order">
+        <div class="container hero-content">
+            <!-- Left Info -->
+            <div>
+                <div class="badge">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>SKIP THE DARSKSISTEM, GET EASY BOT LOBBIES</span>
+                </div>
+                <h1>RANK VS BOT<span>MAX GLORY ⭐75</span></h1>
+                <p>
+                    Layanan push MMR cepat dan K/D/A tinggi 50+ dengan bot jinak yang gampang cari Savage. Proses aman, rapi, dan terjangkau untuk semua tier hingga Max Glory 75.
+                </p>
+                <div class="hero-quick-actions">
+                    <a href="#kalkulatorOrder" class="btn btn-primary">
+                        <i class="fa-solid fa-list-ol"></i>
+                        <span>ORDER</span>
+                    </a>
+                    <a href="#benefit" class="btn btn-secondary">
+                        <span>BENEFIT</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                </div>
+                                    <a href="#syarat" class="btn btn-secondary">
+                        <span>BENEFIT</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+            </div>
+
+            <!-- Right Pricing & Match Order Card -->
+            <div class="pricing-card" id="kalkulatorOrder">
+                <div class="price-header">
+                    <span class="price-label">TARIF RESMI LAYANAN</span>
+                    <span class="glory-pill">
+                        <i class="fa-solid fa-star"></i> MAX GLORY 75
+                    </span>
+                </div>
+
+                <div class="main-price">
+                    RP 2.000 <span>/ MATCH</span>
+                </div>
+
+                <!-- Match Selector & Direct WhatsApp Order Button -->
+                <div class="estimator-box">
+                    <div class="estimator-top">
+                        <span class="estimator-title">
+                            <i class="fa-solid fa-list-ol" style="color: var(--primary);"></i>
+                            PILIH JUMLAH MATCH
+                        </span>
+                        <span id="selectedMatchBadge" class="match-badge">5 MATCH</span>
+                    </div>
+
+                    <div class="match-selector" id="matchSelector">
+                        <button type="button" class="match-opt" data-match="1" onclick="selectMatch(1)">1</button>
+                        <button type="button" class="match-opt" data-match="2" onclick="selectMatch(2)">2</button>
+                        <button type="button" class="match-opt" data-match="3" onclick="selectMatch(3)">3</button>
+                        <button type="button" class="match-opt" data-match="4" onclick="selectMatch(4)">4</button>
+                        <button type="button" class="match-opt active" data-match="5" onclick="selectMatch(5)">5</button>
+                    </div>
+
+                    <div class="estimator-summary">
+                        <div class="est-label">Total Pembayaran</div>
+                        <div id="estimatedPrice" class="est-total">Rp 10.000</div>
+                    </div>
+
+                    <!-- Tombol Order Via WhatsApp -->
+                    <a id="waOrderLink" href="https://wa.me/79002550477?text=Mas%20mau%20order%20RVB%205%20match" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-full">
+                        <i class="fa-brands fa-whatsapp" style="font-size: 1.15rem;"></i>
+                        <span id="waOrderBtnLabel">Order Via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefit Utama Service (1 Kolom Rapat max-width 672px) -->
+    <section id="benefit">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-pill">Keunggulan Layanan</span>
+                <h2>BENEFIT UTAMA SERVICE</h2>
+                <p>Performa optimal untuk push MMR dan mempercantik statistik hero favorit Anda.</p>
+            </div>
+
+            <div class="compact-stack">
+                <div class="compact-row">
+                    <div class="compact-row-left">
+                        <div class="compact-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div>
+                            <h3>MMR CEPET NAIK</h3>
+                            <p>Cocok buat push MMR</p>
+                        </div>
+                    </div>
+                    <span class="compact-badge">Push MMR</span>
+                </div>
+
+                <div class="compact-row">
+                    <div class="compact-row-left">
+                        <div class="compact-icon">
+                            <i class="fa-solid fa-crosshairs"></i>
+                        </div>
+                        <div>
+                            <h3>K/D/A TINGGI</h3>
+                            <p>50+</p>
+                        </div>
+                    </div>
+                    <span class="compact-badge">K/D/A 50+</span>
+                </div>
+
+                <div class="compact-row">
+                    <div class="compact-row-left">
+                        <div class="compact-icon">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div>
+                            <h3>BOT JINAK</h3>
+                            <p>Gampang cari Savage</p>
+                        </div>
+                    </div>
+                    <span class="compact-badge">Easy Savage</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Syarat & Ketentuan Order (1 Kolom Rapat max-width 672px) -->
+    <section id="syarat">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-pill">Aturan Main</span>
+                <h2>SYARAT &amp; KETENTUAN ORDER</h2>
+                <p>Pastikan ketentuan berikut terpenuhi sebelum antrean pertandingan dimulai.</p>
+            </div>
+
+            <div class="compact-stack">
+                <div class="compact-row">
+                    <div class="compact-row-left">
+                        <div class="compact-icon">
+                            <i class="fa-solid fa-check-double"></i>
+                        </div>
+                        <div>
+                            <h3>WAJIB ON FLEKSIBLE</h3>
+                            <p>Flexible mingguan 10x</p>
+                        </div>
+                    </div>
+                    <span class="compact-badge">10x Mingguan</span>
+                </div>
+
+                <div class="compact-row">
+                    <div class="compact-row-left">
+                        <div class="compact-icon">
+                            <i class="fa-solid fa-calendar-day"></i>
+                        </div>
+                        <div>
+                            <h3>LIMIT HARIAN 5 MATCH</h3>
+                            <p>End menit &plusmn;12</p>
+                        </div>
+                    </div>
+                    <span class="compact-badge">Maks. 5 / Hari</span>
+                </div>
+
+                <div class="compact-row">
+                    <div class="compact-row-left">
+                        <div class="compact-icon">
+                            <i class="fa-solid fa-stopwatch"></i>
+                        </div>
+                        <div>
+                            <h3>END WAJIB MENIT 12&plusmn;</h3>
+                            <p>Durasi match sesuai ketentuan</p>
+                        </div>
+                    </div>
+                    <span class="compact-badge">Menit 12&plusmn;</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metode Pembayaran -->
+    <section id="pembayaran">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-pill">Transaksi Mudah</span>
+                <h2>METODE PEMBAYARAN</h2>
+                <p>Pilih metode pembayaran di bawah ini untuk melihat detail nomor rekening atau kode QRIS.</p>
+            </div>
+
+            <div class="grid-2">
+                <!-- SeaBank Card -->
+                <div class="payment-card">
+                    <div>
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div class="card-icon">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </div>
+                            <span class="card-tag">Transfer Bank</span>
+                        </div>
+                        <h3>SEABANK</h3>
+                        <p>Transfer langsung ke rekening SeaBank resmi kami sesuai nominal order Anda.</p>
+
+                        <div class="payment-preview">
+                            <div class="payment-preview-label">Nomor Rekening SeaBank</div>
+                            <div class="payment-preview-value">901811788799</div>
+                            <div class="payment-preview-sub">A.N. NUR HAYATUL MAKKI</div>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="openSeabankModal()" class="btn btn-primary btn-full">
+                        <i class="fa-solid fa-wallet"></i>
+                        <span>Lihat Detail SeaBank</span>
+                    </button>
+                </div>
+
+                <!-- QRIS Card -->
+                <div class="payment-card">
+                    <div>
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div class="card-icon">
+                                <i class="fa-solid fa-qrcode"></i>
+                            </div>
+                            <span class="card-tag">All E-Wallet &amp; M-Banking</span>
+                        </div>
+                        <h3>QRIS</h3>
+                        <p>Scan kode QRIS praktis menggunakan seluruh aplikasi M-Banking atau E-Wallet apa saja.</p>
+
+                        <div class="payment-preview">
+                            <div class="payment-preview-label">Merchant Resmi</div>
+                            <div class="payment-preview-value">CUDDLEXYZ, GAMING</div>
+                            <div class="payment-preview-sub">QRIS Nasional Instant</div>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="openQrisModal()" class="btn btn-primary btn-full">
+                        <i class="fa-solid fa-expand"></i>
+                        <span>Tampilkan Kode QRIS</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak & Sosial Media -->
+    <section id="kontak">
+        <div class="container">
+            <div class="section-title">
+                <span class="section-pill">Kontak &amp; Sosial Media</span>
+                <h2>HUBUNGI &amp; IKUTI KAMI</h2>
+                <p>Kirim bukti pembayaran atau konsultasi jadwal main langsung melalui kontak resmi di bawah ini.</p>
+            </div>
+
+            <div class="grid-3">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/79002550477" target="_blank" rel="noopener noreferrer" class="social-card">
+                    <div class="social-icon icon-wa">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div class="social-meta">
+                        <span>WHATSAPP</span>
+                        <strong>+7 900 255-04-77</strong>
+                    </div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://instagram.com/CUDDLEXYZ" target="_blank" rel="noopener noreferrer" class="social-card">
+                    <div class="social-icon icon-ig">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                    <div class="social-meta">
+                        <span>INSTAGRAM</span>
+                        <strong>@CUDDLEXYZ</strong>
+                    </div>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://tiktok.com/@CUDDLEXYZ" target="_blank" rel="noopener noreferrer" class="social-card">
+                    <div class="social-icon icon-tt">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </div>
+                    <div class="social-meta">
+                        <span>TIKTOK</span>
+                        <strong>@CUDDLEXYZ</strong>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>CUDDLEXYZ RANK VS BOT</h3>
+            <p>Siap membantu push MMR, K/D/A tinggi 50+, dan cari Savage dengan aman.</p>
+            <p class="copyright">&copy; 2026 CUDDLEXYZ &bull; ALL RIGHTS RESERVED</p>
+        </div>
+    </footer>
+
+    <!-- Modal SeaBank -->
+    <div id="seabankModal" class="modal-backdrop" onclick="if(event.target === this) closeSeabankModal()">
+        <div class="modal-box">
+            <button type="button" class="modal-close" onclick="closeSeabankModal()" aria-label="Tutup Modal SeaBank">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-icon">
+                <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <h3 class="modal-title">SEABANK PEMBAYARAN</h3>
+            <p class="modal-desc">Transfer pembayaran sesuai nominal tagihan ke nomor rekening berikut:</p>
+
+            <div class="rekening-box">
+                <div style="font-size: .72rem; font-weight: 700; color: var(--muted); text-transform: uppercase;">Nomor Rekening SeaBank</div>
+                <div id="accountNumber" class="rekening-number">901811788799</div>
+                <div class="rekening-name">A.N. NUR HAYATUL MAKKI</div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" onclick="copyAccountNumber()" class="btn btn-primary btn-full">
+                    <i class="fa-solid fa-copy"></i>
+                    <span>Salin No Rekening</span>
+                </button>
+                <button type="button" onclick="closeSeabankModal()" class="btn btn-secondary btn-full">
+                    <span>Tutup</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal QRIS -->
+    <div id="qrisModal" class="modal-backdrop" onclick="if(event.target === this) closeQrisModal()">
+        <div class="modal-box">
+            <button type="button" class="modal-close" onclick="closeQrisModal()" aria-label="Tutup Modal QRIS">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-icon">
+                <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <h3 class="modal-title">QRIS PEMBAYARAN</h3>
+            <p class="modal-desc">Scan QR Code di bawah ini menggunakan aplikasi M-Banking atau E-Wallet apa saja.</p>
+
+            <div class="qris-frame">
+                <img id="qrisImg" src="https://placehold.co/400x400/0b1326/ffffff?text=QRIS+CUDDLEXYZ" alt="QRIS CUDDLEXYZ" onerror="this.src='https://placehold.co/400x400/6c4cff/ffffff?text=QRIS+CUDDLEXYZ'">
+            </div>
+
+            <div class="merchant-pill">
+                MERCHANT: <span>CUDDLEXYZ, GAMING</span>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" onclick="downloadQrisImage()" class="btn btn-primary btn-full">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download Gambar</span>
+                </button>
+                <button type="button" onclick="closeQrisModal()" class="btn btn-secondary btn-full">
+                    <span>Tutup</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navbar Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        function closeMobileMenu() {
+            navLinks.classList.remove('active');
+        }
+
+        // Background Music Autoplay ("Bastille - Pompeii") on Load / First Interaction + Manual Control
+        window.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('musikLatar');
+            const audioIcon = document.getElementById('audioIcon');
+            audio.volume = 0.65;
+
+            const tryAutoPlay = () => {
+                audio.play().then(() => {
+                    audioIcon.className = 'fa-solid fa-volume-high';
+                    removeInteractionListeners();
+                }).catch(() => {
+                    audioIcon.className = 'fa-solid fa-volume-xmark';
+                });
+            };
+
+            const removeInteractionListeners = () => {
+                document.removeEventListener('click', tryAutoPlay);
+                document.removeEventListener('touchstart', tryAutoPlay);
+                document.removeEventListener('keydown', tryAutoPlay);
+            };
+
+            // Try immediately on load
+            tryAutoPlay();
+
+            // Fallback: play immediately on first user interaction if blocked by browser autoplay policy
+            document.addEventListener('click', tryAutoPlay);
+            document.addEventListener('touchstart', tryAutoPlay);
+            document.addEventListener('keydown', tryAutoPlay);
+        });
+
+        function toggleAudio() {
+            const audio = document.getElementById('musikLatar');
+            const audioIcon = document.getElementById('audioIcon');
+
+            if (audio.paused) {
+                audio.play().then(() => {
+                    audioIcon.className = 'fa-solid fa-volume-high';
+                    showToast('MEMUTAR: BASTILLE - POMPEII');
+                }).catch(() => {
+                    showToast('GAGAL MEMUTAR AUDIO');
+                });
+            } else {
+                audio.pause();
+                audioIcon.className = 'fa-solid fa-volume-xmark';
+                showToast('MUSIK DIJEDA');
+            }
+        }
+
+        // Dynamic Match Selection & WhatsApp Link Updater
+        function selectMatch(count) {
+            const total = count * 2000;
+            const waText = `Mas mau order RVB ${count} match`;
+            const waUrl = `https://wa.me/79002550477?text=${encodeURIComponent(waText)}`;
+
+            // Update Active Button State
+            document.querySelectorAll('.match-opt').forEach(btn => {
+                btn.classList.toggle('active', Number(btn.dataset.match) === count);
+            });
+
+            // Update Price & Match Badge
+            document.getElementById('selectedMatchBadge').innerText = `${count} MATCH`;
+            document.getElementById('estimatedPrice').innerText = `Rp ${total.toLocaleString('id-ID')}`;
+
+            // Update Direct WhatsApp Link
+            document.getElementById('waOrderLink').href = waUrl;
+        }
+
+        // Toast Notification Helper
+        let toastTimer;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.innerText = message;
+
+            clearTimeout(toastTimer);
+            toast.classList.add('show');
+
+            toastTimer = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        // SeaBank Modal Controls
+        function openSeabankModal() {
+            const modal = document.getElementById('seabankModal');
+            modal.style.display = 'flex';
+            requestAnimationFrame(() => {
+                modal.classList.add('show');
+            });
+        }
+
+        function closeSeabankModal() {
+            const modal = document.getElementById('seabankModal');
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 250);
+        }
+
+        function copyAccountNumber() {
+            const accountNumber = document.getElementById('accountNumber').innerText.trim();
+            const textArea = document.createElement('textarea');
+            textArea.value = accountNumber;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-9999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast('BERHASIL DISALIN!');
+            } catch (err) {
+                showToast('GAGAL MENYALIN REKENING');
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // QRIS Modal Controls
+        function openQrisModal() {
+            const modal = document.getElementById('qrisModal');
+            modal.style.display = 'flex';
+            requestAnimationFrame(() => {
+                modal.classList.add('show');
+            });
+        }
+
+        function closeQrisModal() {
+            const modal = document.getElementById('qrisModal');
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 250);
+        }
+
+        function downloadQrisImage() {
+            const imgUrl = document.getElementById('qrisImg').src;
+            const a = document.createElement('a');
+            a.href = imgUrl;
+            a.download = 'QRIS-CUDDLEXYZ.jpg';
+            a.target = '_blank';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showToast('GAMBAR QRIS BERHASIL DIDOWNLOAD!');
+        }
+    </script>
+</body>
+</html>
